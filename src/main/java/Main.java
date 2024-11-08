@@ -1,46 +1,20 @@
-import java.util.Arrays;
+import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
-        // 일반 버전
-        System.out.println("== 일반 버전!!!!!! ==");
-        int[] arr = {20, 30, 22, 4, 77, 8, 3, 31, 90, 10};
+        System.out.println("== 프로그램 시작 ==");
 
-        // filter
-        int resultArrLen = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.printf("명령어) ");
+        String command = sc.nextLine();
+        System.out.printf("입력된 명령어 : %s\n", command);
 
-        for ( int n : arr ) if ( n % 2 == 0) resultArrLen++;
+        System.out.printf("명령어) ");
+        int num = sc.nextInt();
+        System.out.printf("입력된 숫자 : %d\n", num);
 
-        int[] resultArr = new int[resultArrLen];
 
-        int resultArrLastIndex = -1;
-
-        for ( int n : arr ) {
-            if ( n % 2 != 0 ) continue;
-
-            resultArr[++resultArrLastIndex] = n;
-        }
-
-        // map
-        for ( int i = 0; i < resultArr.length; i++ ) {
-            resultArr[i] *= 2;
-        }
-
-        System.out.println(Arrays.toString(resultArr));
-
-        // 스트림 버전
-        System.out.println("== 스트림 버전 ==");
-        arr = new int[]{20, 30, 22, 4, 77, 8, 3, 31, 90, 10};
-
-        resultArr = Arrays.stream(arr)
-                .filter(e -> e % 2 == 0)
-                .map(e -> e * 2)
-                .toArray();
-
-        System.out.println(Arrays.toString(resultArr));
-
-        int a = 10;
-        System.out.println(a);
-
+        sc.close();
+        System.out.println("== 프로그램 끝 ==");
     }
 }
