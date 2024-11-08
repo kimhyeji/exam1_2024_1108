@@ -38,5 +38,9 @@ class Main {
                 .toArray();
 
         System.out.println(Arrays.toString(resultArr));
+
+        int a = 10;
+        System.out.println(a);
+
     }
 }
