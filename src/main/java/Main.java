@@ -3,7 +3,7 @@ import java.util.Arrays;
 class Main {
     public static void main(String[] args) {
         // 일반 버전
-        System.out.println("== 일반 버전 ==");
+        System.out.println("== 일반 버전!!!!!! ==");
         int[] arr = {20, 30, 22, 4, 77, 8, 3, 31, 90, 10};
 
         // filter
