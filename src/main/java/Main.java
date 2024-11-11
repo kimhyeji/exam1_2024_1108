@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class Main {
@@ -7,6 +9,8 @@ class Main {
         Scanner sc = new Scanner(System.in);
 
         int lastArticleId = 0;
+
+        List<Article> articles = new ArrayList<>();
 
         while ( true ) {
             System.out.printf("명령어) ");
@@ -21,7 +25,18 @@ class Main {
                 break;
             }
             else if ( command.equals("article list")) {
-                System.out.println("게시글이 없습니다.");
+                if ( articles.size() == 0 ) {
+                    System.out.println("게시글이 없습니다.");
+                    continue;
+                }
+
+                System.out.println("번호, 제목, 내용");
+                for ( int i = 0; i < articles.size(); i++ ) {
+                    Article article = articles.get(i);
+
+                    System.out.printf("%d, %s, %s\n", article.id, article.title, article.body);
+
+                }
             }
             else if ( command.equals("article write")) {
                 int id = lastArticleId + 1;
@@ -29,6 +44,9 @@ class Main {
                 String title = sc.nextLine();
                 System.out.printf("내용 : ");
                 String body = sc.nextLine();
+
+                Article article = new Article(id, title, body);
+                articles.add(article);
 
                 lastArticleId = id;
 
@@ -42,5 +60,17 @@ class Main {
 
         sc.close();
         System.out.println("== 프로그램 끝 ==");
+    }
+}
+
+class Article {
+    int id;
+    String title;
+    String body;
+
+    public Article(int id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
     }
 }
