@@ -30,11 +30,11 @@ class Main {
                     continue;
                 }
 
-                System.out.println("번호, 제목, 내용");
+                System.out.println("번호 |  제목  |  내용");
                 for ( int i = 0; i < articles.size(); i++ ) {
                     Article article = articles.get(i);
 
-                    System.out.printf("%d, %s, %s\n", article.id, article.title, article.body);
+                    System.out.printf("%3d | %6s | %6s\n", article.id, article.title, article.body);
 
                 }
             }
