@@ -3,14 +3,14 @@ import java.util.List;
 import java.util.Scanner;
 
 class Main {
+    static List<Article> articles = new ArrayList<>();
+
     public static void main(String[] args) {
         System.out.println("== 프로그램 시작 ==");
 
         Scanner sc = new Scanner(System.in);
 
         int lastArticleId = 0;
-
-        List<Article> articles = new ArrayList<>();
 
         while ( true ) {
             System.out.printf("명령어) ");
@@ -57,16 +57,7 @@ class Main {
                 String[] commandBits = command.split(" ");
                 int id = Integer.parseInt(commandBits[2]);
 
-                Article foundArticle = null;
-
-                for ( int i = 0; i < articles.size(); i++ ) {
-                    Article article = articles.get(i);
-
-                    if ( article.id == id ) {
-                        foundArticle = article;
-                        break;
-                    }
-                }
+                Article foundArticle = getArticleById(id);
 
                 if ( foundArticle == null ) {
                     System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
@@ -82,16 +73,7 @@ class Main {
                 String[] commandBits = command.split(" ");
                 int id = Integer.parseInt(commandBits[2]);
 
-                Article foundArticle = null;
-
-                for ( int i = 0; i < articles.size(); i++ ) {
-                    Article article = articles.get(i);
-
-                    if ( article.id == id ) {
-                        foundArticle = article;
-                        break;
-                    }
-                }
+                Article foundArticle = getArticleById(id);
 
                 if ( foundArticle == null ) {
                     System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
@@ -112,16 +94,7 @@ class Main {
                 String[] commandBits = command.split(" ");
                 int id = Integer.parseInt(commandBits[2]);
 
-                int foundIndex = -1;
-
-                for ( int i = 0; i < articles.size(); i++ ) {
-                    Article article = articles.get(i);
-
-                    if ( article.id == id ) {
-                        foundIndex = i;
-                        break;
-                    }
-                }
+                int foundIndex = getArticleIndexById(id);
 
                 if ( foundIndex == -1 ) {
                     System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
@@ -139,6 +112,26 @@ class Main {
 
         sc.close();
         System.out.println("== 프로그램 끝 ==");
+    }
+
+    private static int getArticleIndexById(int id) {
+        int i = 0;
+        for ( Article article : articles ) {
+            if ( article.id == id ) return i;
+            i++;
+        }
+
+        return -1;
+    }
+
+    private static Article getArticleById(int id) {
+        int index = getArticleIndexById(id);
+
+        if ( index != -1 ) {
+            return articles.get(index);
+        }
+
+        return null;
     }
 }
 
