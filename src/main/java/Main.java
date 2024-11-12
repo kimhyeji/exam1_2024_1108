@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import dto.Article;
+import util.Util;
 
 class Main {
     static List<Article> articles = new ArrayList<>();
@@ -138,19 +140,5 @@ class Main {
         }
 
         return null;
-    }
-}
-
-class Article {
-    int id;
-    String regDate;
-    String title;
-    String body;
-
-    public Article(int id, String regDate, String title, String body) {
-        this.id = id;
-        this.regDate = regDate;
-        this.title = title;
-        this.body = body;
     }
 }
