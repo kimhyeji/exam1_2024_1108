@@ -8,9 +8,9 @@ class Main {
     public static void main(String[] args) {
         System.out.println("== 프로그램 시작 ==");
 
-        Scanner sc = new Scanner(System.in);
+        makeTestData();
 
-        int lastArticleId = 0;
+        Scanner sc = new Scanner(System.in);
 
         while ( true ) {
             System.out.printf("명령어) ");
@@ -39,7 +39,7 @@ class Main {
                 }
             }
             else if ( command.equals("article write")) {
-                int id = lastArticleId + 1;
+                int id = articles.size() + 1;
                 String regDate = Util.getNowDateStr();
                 System.out.printf("제목 : ");
                 String title = sc.nextLine();
@@ -48,8 +48,6 @@ class Main {
 
                 Article article = new Article(id, regDate, title, body);
                 articles.add(article);
-
-                lastArticleId = id;
 
                 System.out.printf("%d번 글이 생성되었습니다.\n", id);
             }
@@ -112,6 +110,14 @@ class Main {
 
         sc.close();
         System.out.println("== 프로그램 끝 ==");
+    }
+
+    private static void makeTestData() {
+        System.out.println("테스트를 위한 데이터를 생성합니다.");
+
+        articles.add(new Article(1, Util.getNowDateStr(), "제목1", "내용1"));
+        articles.add(new Article(2, Util.getNowDateStr(), "제목2", "내용2"));
+        articles.add(new Article(3, Util.getNowDateStr(), "제목3", "내용3"));
     }
 
     private static int getArticleIndexById(int id) {
